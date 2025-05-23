@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+</head>
+<body>
+  <!-- === Navbar === -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="brand">MySite</div>
+      <button class="toggle-button" onclick="toggleMenu()">☰</button>
+      <div class="navbar-links" id="navLinks">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- === Main Layout (Sidebar + Viewer) === -->
+  <div class="main">
+    <div id="sidebar">
+      <h3 id="info-box">Click a project to see details</h3>
+      <p>This is your portfolio sidebar. Add info here.</p>
+    </div>
+
+    <div id="viewer">
+      <a-scene embedded>
+        <a-box id="project-1" position="-1 1.5 -3" color="tomato"></a-box>
+        <a-box id="project-2" position="1 1.5 -3" color="steelblue"></a-box>
+        <a-sky color="#ECECEC"></a-sky>
+      </a-scene>
+    </div>
+  </div>
+
+  <!-- === Interaction Script === -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    document.getElementById('project-1').addEventListener('click', () => {
+      document.getElementById('info-box').textContent = 'Project 1: 3D Network Visualizer';
+    });
+
+    document.getElementById('project-2').addEventListener('click', () => {
+      document.getElementById('info-box').textContent = 'Project 2: AI Resume Builder';
+    });
+  </script>
+</body>
+</html>

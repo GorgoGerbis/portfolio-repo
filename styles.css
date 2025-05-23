@@ -1,0 +1,129 @@
+/* === Display Types (how elements flow) === */
+
+/* block         // Takes full width by default (e.g., <div>, <p>)
+              // Starts on a new line
+              // Use when you want content stacked vertically */
+/* 
+inline        // Only takes as much width as content (e.g., <span>, <a>)
+              // Cannot set width/height
+              // Use for short phrases, icons, or inline text
+
+inline-block  // Like inline, but allows width/height to be set
+              // Great for buttons or nav links that need size control
+
+flex          // One-dimensional layout (row or column)
+              // Use for aligning items horizontally or vertically
+              // Example: navbars, cards, toolbars
+
+grid          // Two-dimensional layout (rows *and* columns)
+              // Use for complex, structured layouts like dashboards */
+
+/* === Positioning (where elements appear) === */
+
+/* static        // Default flow — top to bottom, left to right
+              // Use when no special positioning is needed
+
+relative      // Moves *relative* to its normal spot
+              // Use for light adjustments (e.g., nudge a button)
+
+absolute      // Positioned relative to nearest non-static parent
+              // Use for dropdowns, tooltips, floating panels
+
+fixed         // Always stays in the same place (relative to viewport)
+              // Use for navbars, floating buttons
+
+sticky        // Scrolls until it hits a limit, then “sticks” in place
+              // Use for headers that pin after scroll */
+
+/* === Box Model (spacing) === */
+
+/* margin        // Space *outside* the element (creates gaps between elements)
+padding       // Space *inside* the element (pushes content inward)
+border        // Visual outline (can add thickness)
+box-sizing    // Use `border-box` to include padding + border in width */
+
+/* === Media Queries (responsive design) === */
+
+/* === General Reset === */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* === Center Content in a Max-Width Container === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* === Navbar Styles === */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem 0;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navbar-links {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.toggle-button {
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: block;
+}
+
+/* === Sidebar + Viewer Layout === */
+.main {
+  display: flex;
+  height: calc(100vh - 80px); /* Adjust to exclude navbar height */
+}
+
+#sidebar {
+  width: 30%;
+  background: #f0f0f0;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#viewer {
+  width: 70%;
+}
+
+/* === Desktop Breakpoint === */
+@media (min-width: 768px) {
+  .toggle-button {
+    display: none;
+  }
+
+  .navbar-links {
+    display: flex !important;
+    flex-direction: row;
+    margin-top: 0;
+  }
+}
